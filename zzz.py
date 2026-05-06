@@ -12,7 +12,7 @@ right_sound   = mixer.Sound(sound_dir + "ding.mp3")
 
 mouse = InputDevice('/dev/input/event0') # or event1, etc. if other devices are present
 
-print("Ready! Listening for input...")
+print(formatted_time, "Ready! Listening for input...")
 ready_sound.play()
 
 for event in mouse.read_loop():

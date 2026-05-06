@@ -15,12 +15,11 @@ You will need:
 
 ## Setup
 
-Clone the repo to your Pi. Install Python:
+Clone the repo to your Pi. Install Python and dependencies:
 ```
 sudo apt update
-sudo apt install python3 python3-pip
-```
-Install dependencies:
+sudo apt install python3 python3-pip python3-pygame alsa-utils libasound2-plugins
+Install python packages:
 ```
 pip3 install pygame evdev
 ```
@@ -30,9 +29,15 @@ Put sounds in the `sound` directory and link them to your desired buttons in `zz
 
 Adjust volume with `alsamixer`.
 
+Make run script executable: `chmod +x run.sh`
+
 ## Running
 
-Run `sh run.sh` in the project directory.
+In the project directory:
+
+`./run.sh`
+
+Ctrl-C to exit.
 
 Timestamped logs are collected in `sleep.log`.
 
