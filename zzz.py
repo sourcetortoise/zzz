@@ -1,8 +1,12 @@
+# zzz – sleep computer
+# Plays sounds when mouse buttons are pressed to confirm dreaming.
+
 from evdev import InputDevice, ecodes
 from pygame import mixer
 import time
 
-print("Initializing...")
+print(formatted_time(), "Initializing...")
+
 mixer.init()
 sound_dir = '/home/pi/zzz/sound/'
 ready_sound   = mixer.Sound(sound_dir + "piano.mp3")

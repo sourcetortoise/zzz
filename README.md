@@ -42,7 +42,7 @@ Ctrl-C to exit.
 
 Timestamped logs are collected in `sleep.log`.
 
-#### Auto-run on Raspberry Pi power-on:
+## Auto-run on Raspberry Pi power-on:
 
 Run `sudo raspi-config`, then:
 - Select System Options
@@ -98,6 +98,12 @@ Then reload:
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 ```
+
+## v2 Upgrade
+
+<!-- ![ZLauncher in operation](https://github.com/mirthturtle/zzz/blob/main/hat.jpg "ZLauncher in operation") -->
+
+For more control, the [Waveshare 1.44inch LCD HAT](https://www.waveshare.com/wiki/1.44inch_LCD_HAT) provides a screen and input buttons. Modify `run.sh` or `zzz.service` to use `zlauncher.py` instead of `zzz.py`.
 
 ## License
 
