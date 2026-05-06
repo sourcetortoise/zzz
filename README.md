@@ -19,6 +19,7 @@ Clone the repo to your Pi. Install Python and dependencies:
 ```
 sudo apt update
 sudo apt install python3 python3-pip python3-pygame alsa-utils libasound2-plugins
+```
 Install python packages:
 ```
 pip3 install pygame evdev
@@ -40,6 +41,63 @@ In the project directory:
 Ctrl-C to exit.
 
 Timestamped logs are collected in `sleep.log`.
+
+#### Auto-run on Raspberry Pi power-on:
+
+Run `sudo raspi-config`, then:
+- Select System Options
+- Select Boot / Auto Login
+- Select B2 (Console Autologin)
+
+Add a directory and script for a systemd service:
+```
+mkdir -p ~/.config/systemd/user
+nano ~/.config/systemd/user/zzz.service
+```
+
+In this file:
+```
+[Unit]
+Description=zzz autostart
+
+[Service]
+ExecStart=nohup /usr/bin/python3 -u /home/pi/zzz/zzz.py
+
+[Install]
+WantedBy=default.target
+```
+
+Then:
+```
+systemctl --user daemon-reexec
+systemctl --user enable zzz
+systemctl --user start zzz
+```
+
+Add `pi` user to the `input` group so the startup process has access to the mouse:
+```
+sudo usermod -aG input pi
+```
+
+Enable user lingering:
+```
+loginctl enable-linger pi
+```
+
+Give mouse access to whole system:
+```
+sudo nano /etc/udev/rules.d/99-mouse.rules
+```
+In this file, put:
+```
+KERNEL=="event*", SUBSYSTEM=="input", MODE="0666"
+```
+
+Then reload:
+```
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
 
 ## License
 

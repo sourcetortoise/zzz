@@ -10,7 +10,8 @@ trigger_sound = mixer.Sound(sound_dir + "sonar.mp3")
 left_sound    = mixer.Sound(sound_dir + "pop.mp3")
 right_sound   = mixer.Sound(sound_dir + "ding.mp3")
 
-mouse = InputDevice('/dev/input/event0') # or event1, etc. if other devices are present
+# replace with your mouse's ID
+mouse = InputDevice('/dev/input/by-id/usb-HID-compliant_Mouse_HID-compliant_Mouse-event-mouse')
 
 print(formatted_time, "Ready! Listening for input...")
 ready_sound.play()
