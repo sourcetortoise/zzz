@@ -30,8 +30,8 @@ ZZZ_MODE = 1
 mode = MAIN_MENU
 
 TOP_POS = 27
-MID_POS = 57
-BOT_POS = 87
+MIDDLE_POS = 57
+BOTTOM_POS = 87
 
 print("ZLauncher started.")
 
@@ -44,9 +44,9 @@ try:
             draw.rectangle((0, 0, disp.width, disp.height), outline=0, fill=0)
 
             # 3 button options
-            draw.text((108, TOP_POS), 'zzz ', fill = "BLUE")
-            draw.text((85, MID_POS), '  ', fill = "BLUE")
-            draw.text((102, BOT_POS), 'Quit ', fill = "RED")
+            draw.text((107, TOP_POS), 'zzz ', fill = "BLUE")
+            draw.text((85, MIDDLE_POS), '  ', fill = "BLUE")
+            draw.text((103, BOTTOM_POS), 'Quit ', fill = "RED")
 
         elif mode == ZZZ_MODE:
             # zzz header
@@ -54,7 +54,7 @@ try:
             draw.text((10, 10), 'zzz ', fill = "BLUE")
 
             # exit button
-            draw.text((106, BOT_POS), 'Exit ', fill = "PURPLE")
+            draw.text((106, BOTTOM_POS), 'Exit ', fill = "PURPLE")
 
 
         # HANDLE KEY INPUTS
@@ -65,7 +65,7 @@ try:
               print("Entering zzz mode")
 
               # spin off zzz process
-              os.system("nohup /usr/bin/python3 -u /home/pi/zzz/zzz.py > /home/pi/zzz/sleep.log 2>&1 &")
+              os.system("nohup /usr/bin/python3 -u /home/pi/zzz/zzz.py >> /home/pi/zzz/sleep.log 2>&1 &")
 
         # KEY 2
         if disp.digital_read(disp.GPIO_KEY2_PIN) != 0:
